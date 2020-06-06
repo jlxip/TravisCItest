@@ -2,7 +2,18 @@ dist: trusty
 sudo: false
 language: cpp
 compiler: gcc
-
 script:
   - make -j2
-
+  - cp main mainxz
+  - xz mainxz
+  - mv mainxz.xz main.xz
+deploy:
+  provider: releases
+  api_key:
+    secure: FCAI5HHbreHGsS57JcYDMtqtvqgCZuMgjhtBCpcW/nXvkukijnIqa2W5VWqJAhdBsV/VutPpSxFcDRw3nAvy1MsInUfr2Np+91gU+iXTctDNc/1hLkkhlwrcfhQ/resB6BPuh8MldhxxUsAVwg5xFGlf/cyn2WtToZ2Roo93AS1VXcVTC1Jmx0+PsbucALrgTOsmIVEOyjwqxsrAnyAaGHmpv5cD3i7jRxMirfflcalPvBSoe3bB3CR+gtaJrihdiGVGD5sBwRtsfnAS9xb8S3yVT1A8O3rf+t1vsCnLitX4etuwYSAe2BsmcagDWyISY7d6DP28zl6D44mdWV5DKOob0KOTPBHXLZjXVyA+yxJDVAcckfWSW0ln4Fs/SpN4PBs2mZPVEIYzitd155d4grT2dlKxGYlv9i3LHNWxDm9VvGPVeVxSINWCOqs04ThQ7/JMTUjTbi6AU+EPqEz98MfD8A5HiQwTRnCgRmybLhRazhtbeZWxu+r3xK0nr72NL9IFcNCRv9HBdu6+sqv7gvyJ/xFCzDlTuw57LH9v7W7wFp1qHQ8ZBBRsGiXo6D67gtj5w9VzPcqv9PrFsguve81CyOP9jKL8tnp/GIQe7NMRsM9M4rVWHiuDMNRGiwlmIqKtScAJ0q+wNvbh5LkqEu3+Qq/Y4uGXedNlAi2LbJE=
+  file:
+    - main
+    - main.xz
+  on:
+    repo: jlxip/TravisCItest
+  skip_cleanup: 'true'
