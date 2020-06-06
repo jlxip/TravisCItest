@@ -19,5 +19,4 @@ deploy:
     - main.xz
   on:
     repo: jlxip/TravisCItest
-    tags: true
   skip_cleanup: 'true'
