@@ -2,7 +2,6 @@ dist: trusty
 sudo: false
 language: cpp
 compiler: gcc
-install: make
 
 script:
   - make -j2
