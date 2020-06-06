@@ -4,9 +4,12 @@ language: cpp
 compiler: gcc
 script:
   - make -j2
-  - cp main mainxz
-  - xz mainxz
-  - mv mainxz.xz main.xz
+  - cp main mainxz && xz mainxz && mv mainxz.xz main.xz
+
+before_deploy:
+  - export TRAVIS_TAG=$(date +'%Y%m%d.%H%M%S')
+  - git tag $TRAVIS_TAG
+
 deploy:
   provider: releases
   api_key:
@@ -16,4 +19,5 @@ deploy:
     - main.xz
   on:
     repo: jlxip/TravisCItest
+    tags: true
   skip_cleanup: 'true'
