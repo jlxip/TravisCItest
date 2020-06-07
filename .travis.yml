@@ -7,8 +7,7 @@ script:
   - cp main mainxz && xz mainxz && mv mainxz.xz main.xz
 
 before_deploy:
-  - export TRAVIS_TAG=$(date +'%Y%m%d.%H%M%S')
-  - git tag $TRAVIS_TAG
+  - git tag $(date +'%Y%m%d.%H%M%S')
 
 deploy:
   provider: releases
@@ -17,6 +16,4 @@ deploy:
   file:
     - main
     - main.xz
-  on:
-    repo: jlxip/TravisCItest
   skip_cleanup: 'true'
